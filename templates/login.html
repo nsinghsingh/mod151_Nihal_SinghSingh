@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/loginstyle.css' %}">
+    <title>Login screen</title>  
+</head>
+<body>
+    <div id="login">
+        <h1>
+            {% if hasAccount == 1 %}
+                Login
+            {% else %}
+                Register
+            {% endif %}
+        </h1>
+
+        {% if error_message %}<p id="error"><strong>{{error_message}}</strong></p> {% endif %}
+
+        <form id="login_form" method="post" action= {% if hasAccount == 1 %} "{% url 'login:tryLogin' %}" {% else %}"{% url 'login:tryRegister' %}"{% endif %}>{% csrf_token %}
+            <p>Please enter your username</p>
+            <input type="text" class="field" name="login_name" value={{login_name}}>
+            <p>Please enter your password</p>
+            <input type="password" class="field" name="login_password" value={{login_password}}>
+            <input id="login_button" type="submit" {% if hasAccount == 1 %} value="Login" {% else %} value="Register" {% endif %}>
+            {% if hasAccount == 1 %}
+                <a href="{% url 'login:register'%}" id="register_link">New user?</a>
+            {% else %}
+                <a href="{% url 'login:login'%}" id="register_link">Go back to login</a>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
