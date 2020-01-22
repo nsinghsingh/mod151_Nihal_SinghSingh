@@ -30,7 +30,7 @@ def trylogin(request):
             request.session['IsLoggedIn'] = True
             request.session['username'] = login_name
             request.session.set_expiry(0)
-            return render(request, 'success.html')
+            return HttpResponseRedirect(reverse('menu:browse'))
         else:
             return render(request, 'login.html', {
                 'error_message': "Your password or username is incorrect",
