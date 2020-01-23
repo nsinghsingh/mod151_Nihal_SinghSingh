@@ -18,10 +18,10 @@ body, html{
     justify-content: space-between;
     flex-direction: column;
     min-height: 520px;
-    min-width: 350px;
+    min-width: 320px;
     height: 50%;
     width: 30%;
-    padding: 2% 5% 2% 5%;
+    padding: 40px 5% 40px 5%;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 #login_form{
