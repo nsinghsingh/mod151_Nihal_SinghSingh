@@ -16,3 +16,9 @@ def browse(request):
     else:
         return check(request)
 
+
+def write(request):
+    if request.session.get('IsLoggedIn', False):
+        return render(request, 'write.html')
+    else:
+        return check(request)
