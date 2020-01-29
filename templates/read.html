@@ -14,6 +14,7 @@
         <pre id="text">{{ story }}</pre>
     </div>
     {% for extension in extensions %}
-
+        <a class="extend" href="{% url 'menu:read' extension.fk_continuation.pk %}">{{ extension.fk_continuation.title }}</a>
     {% endfor %}
+    <a class="extend" href="{% url 'menu:extend' id %}">Extend this story</a>
 {% endblock %}
