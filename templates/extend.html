@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Extend{% endblock %}
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'browsestyle.css' %}">
+    <link rel="stylesheet" href="{% static 'writestyle.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form id="extend" method="post" action="{% url 'menu:add' %}">{% csrf_token %}
+    <div>
+        <h3>Previous story</h3>
+        <input id="id_story" type="text" name="id_story" required readonly value="{{ story_id }}: {{ title }}">
+    </div>
+    <div>
+        <h3>Link title</h3>
+        <input id="link_title" type="text" name="link_title" maxlength="20" required>
+    </div>
+    <div>
+        <h3>Story</h3>
+        <textarea form="extend" id="story" name="story" maxlength="2000" minlength="100" required></textarea>
+    </div>
+        <input id="submit" type="submit" value="Submit">
+{% endblock %}

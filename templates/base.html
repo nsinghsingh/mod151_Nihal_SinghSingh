@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block links %}{% endblock %}
+
+</head>
+<body>
+<div id="header">
+    <div id="icons">
+        {% load static %}
+        <img id="logo" src="{% static 'Logo.png' %}" alt="Write stuff">
+        <p>ee</p>
+    </div>
+    <div id="navbar">
+        <a class="tab" href="{% url 'menu:browse' %}">Browse</a>
+        <a class="tab" href="{% url 'menu:write' %}">Write</a>
+        <a class="tab" href="google.com">My stories</a>
+    </div>
+</div>
+{% block content %}{% endblock %}
+</body>
+</html>

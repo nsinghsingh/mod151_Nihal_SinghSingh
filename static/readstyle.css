@@ -1,0 +1,33 @@
+#read{
+    height: 100%;
+    width: 100%;
+    min-height: 900px;
+    margin: 40px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#text{
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+    width: 100%;
+    min-height: 700px;
+    padding: 20px;
+    align-content: center;
+    justify-content: center;
+}
+.extend{
+    background: rgb(121,117,255);
+    background: linear-gradient(225deg, rgba(121,117,255,1) 0%, rgba(255,115,221,1) 100%);
+    color: #ffffff;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}

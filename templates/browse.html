@@ -1,69 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Browse</title>
+{% extends "base.html" %}
+
+{% block title %}Browse{% endblock %}
+
+{% block links %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'browsestyle.css' %}">
-</head>
-<body>
-<div id="header">
-    <div id="icons">
-        {% load static %}
-        <img id="logo" src="{% static 'Logo.png' %}" alt="Write stuff">
-        <p>ee</p>
-    </div>
-    <div id="navbar">
-        <a class="tab" href="google.com">Browse</a>
-        <a class="tab" href="google.com">Write</a>
-        <a class="tab" href="google.com">Continue</a>
-    </div>
-</div>
-<form id="search">
-    <input id="story_name" type="text" name="story_name">
+{% endblock %}
+
+{% block content %}
+    <form id="search" method="post" action="{% url 'menu:search' %}">{% csrf_token %}
+    <input id="story_name" type="text" name="story_name" required>
     <input id="submit" type="submit" value="Search">
 </form>
 <div id="list">
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
-    <div class="results">
-        <h1>sds</h1>
-        <p>Kategorie: 0 Länge: 0 Likes: 0</p>
-    </div>
+    {% for story in stories %}
+        <a href="{% url "menu:read" story.pk %}" class="results">
+            <h1>{{ story.title }}</h1>
+            <pre style="font-family: Arial, Helvetica, sans-serif">Kategorie:{{ story.category }}   Autor:{{ story.fk_user.username }}   Likes:0</pre>
+        </a>
+    {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}

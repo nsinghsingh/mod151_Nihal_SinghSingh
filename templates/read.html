@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Read{% endblock %}
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'browsestyle.css' %}">
+    <link rel="stylesheet" href="{% static 'readstyle.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="read">
+    <h1>{{ title }}</h1>
+        <pre id="text">{{ story }}</pre>
+    </div>
+    {% for extension in extensions %}
+        <a class="extend" href="{% url 'menu:read' extension.fk_continuation.pk %}">{{ extension.fk_continuation.title }}</a>
+    {% endfor %}
+    <a class="extend" href="{% url 'menu:extend' id %}">Extend this story</a>
+{% endblock %}
