@@ -1,0 +1,80 @@
+.my_stories{
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 120px;
+    padding: 20px;
+    display: flex;
+    flex-flow: row;
+    align-content: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    color: black;
+}
+button, .button{
+    background: rgb(121,117,255);
+    background: linear-gradient(225deg, rgba(121,117,255,1) 0%, rgba(255,115,221,1) 100%);
+    border: none;
+    color: #ffffff;
+    width: 120px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button_section{
+    min-width: 20%;
+    min-height: 80px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+#list{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#change {
+	display: none;
+	background-color: #e6e6e6;
+    border: 2px black solid;
+    position: fixed;
+	height: 80%;
+	width: 80%;
+    padding: 20px;
+}
+body{
+
+}
+
+#form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+#category, #title, #story{
+    font-size: 16px;
+}
+
+#story{
+    height: 300px;
+    width: 100%;
+}
+
+#category, #title, #old_title{
+    width: 30%;
+    height: 30px;
+}
+#old_title{
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bolder;
+}
