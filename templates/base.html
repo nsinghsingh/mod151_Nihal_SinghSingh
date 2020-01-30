@@ -11,12 +11,13 @@
     <div id="icons">
         {% load static %}
         <img id="logo" src="{% static 'Logo.png' %}" alt="Write stuff">
-        <p>ee</p>
+        <p></p>
     </div>
     <div id="navbar">
         <a class="tab" href="{% url 'menu:browse' %}">Browse</a>
         <a class="tab" href="{% url 'menu:write' %}">Write</a>
-        <a class="tab" href="google.com">My stories</a>
+        <a class="tab" href="{% url 'menu:mystories' %}">My stories</a>
+        <a class="tab" href="{% url 'login:logout' %}">Logout</a>
     </div>
 </div>
 {% block content %}{% endblock %}

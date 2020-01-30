@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /*Browse screen*/
@@ -11,7 +12,6 @@ body, html{
     display: flex;
     flex-flow: column;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 body{
     padding: 20px;
@@ -86,6 +86,7 @@ body{
     padding: 0 20px;
     min-height: 1200px;
     margin-bottom: 20px;
+    margin-top: 20px;
     overflow-y: scroll;
 }
 .results{

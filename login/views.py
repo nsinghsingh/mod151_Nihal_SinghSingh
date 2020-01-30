@@ -4,7 +4,8 @@ from .models import User
 from django.urls import reverse
 
 # Create your views here.
- 
+
+
 def login(request, hasAccount=1):
     return render(request, 'login.html', {'hasAccount': hasAccount})
 
@@ -64,3 +65,8 @@ def tryregister(request):
             'login_name': login_name,
             'login_password': login_password
         })
+
+
+def logout(request):
+    request.session.delete()
+    return login(request, 1)

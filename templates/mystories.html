@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Browse{% endblock %}
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'browsestyle.css' %}">
+    <link rel="stylesheet" href="{% static 'mystoriesstyle.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="list">
+    {% for story in stories %}
+        <div class="my_stories">
+            <div>
+                <a href="{% url "menu:read" story.pk %}" style="color: black; text-decoration: none">
+                <h1>{{ story.title }}</h1>
+                <pre>Kategorie:{{ story.category }}   Autor:{{ story.fk_user.username }}   Likes:0</pre>
+                </a>
+            </div>
+            <div class="button_section">
+                <button onclick="openPopup({{ story.pk }}, `{{ story.title }}`)">Change</button>
+                <button onclick="openPrompt('{% url 'menu:delete' story.pk %}')">Delete</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div id="change">
+    <form id="form" method="post" action="{% url 'menu:change' %}">{% csrf_token %}
+        <div>
+            <input type="text" name="old_title" id="old_title" readonly/>
+        </div>
+        <div>
+            <h3>New title</h3>
+            <input id="title" type="text" name="title" maxlength="20" placeholder="Leave this to empty to not change it">
+        </div>
+        <div>
+            <h3>New category</h3>
+            <select name="category" id="category" >
+                <option value="Fiction">Science fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+            </select>
+        </div>
+        <div id="big_div">
+            <h3>New story</h3>
+            <textarea form="form" id="story" name="story" maxlength="1800" minlength="100" placeholder="Leave this to empty to not change it"></textarea>
+        </div>
+        <div class="button_section">
+            <input class="button" type="submit" value="Submit">
+            <div class="button" onclick="closePopup()">Cancel</div>
+        </div>
+    </form>
+</div>
+
+<script src="../static/mystoriesscript.js"></script>
+{% endblock %}

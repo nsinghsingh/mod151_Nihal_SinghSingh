@@ -95,3 +95,37 @@ def add(request):
         return read(request, new_story.pk)
     else:
         return check(request)
+
+
+def mystories(request):
+    if request.session.get('IsLoggedIn', False):
+        stories = Story.objects.filter(fk_user__username=request.session['username']).order_by('title')
+        return render(request, 'mystories.html', {
+            "stories": stories
+        })
+    else:
+        return check(request)
+
+
+def change(request):
+    if request.session.get('IsLoggedIn', False):
+        old_story = Story.objects.get(id=request.POST['old_title'].split('.')[0])
+        if len(request.POST['title']) > 0:
+            old_story.title = request.POST['title']
+        if len(request.POST['category']) > 0:
+            old_story.category = request.POST['category']
+        if len(request.POST['story']) > 0:
+            old_story.story = request.POST['story']
+        old_story.save()
+        return mystories(request)
+    else:
+        return check(request)
+
+
+def delete(request, id_number):
+    if request.session.get('IsLoggedIn', False):
+        story = Story.objects.get(id=id_number)
+        story.delete()
+        return mystories(request)
+    else:
+        return check(request)
