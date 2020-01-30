@@ -12,4 +12,5 @@ urlpatterns = [
     path('add', views.add, name='add'),
     path('mystories', views.mystories, name='mystories'),
     path('change', views.change, name='change'),
+    path('delete/<int:id_number>', views.delete, name='delete'),
 ]

@@ -120,3 +120,12 @@ def change(request):
         return mystories(request)
     else:
         return check(request)
+
+
+def delete(request, id_number):
+    if request.session.get('IsLoggedIn', False):
+        story = Story.objects.get(id=id_number)
+        story.delete()
+        return mystories(request)
+    else:
+        return check(request)
