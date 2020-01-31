@@ -1,13 +1,10 @@
 {% extends "base.html" %}
-
 {% block title %}Write{% endblock %}
-
 {% block links %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'browsestyle.css' %}">
     <link rel="stylesheet" href="{% static 'writestyle.css' %}">
 {% endblock %}
-
 {% block content %}
     <form id="write" method="post" action="{% url 'menu:submit' %}">{% csrf_token %}
         <div>
