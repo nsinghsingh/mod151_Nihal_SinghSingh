@@ -1,23 +1,21 @@
 {% extends "base.html" %}
-
 {% block title %}Browse{% endblock %}
-
 {% block links %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'browsestyle.css' %}">
 {% endblock %}
-
 {% block content %}
-    <form id="search" method="post" action="{% url 'menu:search' %}">{% csrf_token %}
-    <input id="story_name" type="text" name="story_name" required>
-    <input id="submit" type="submit" value="Search">
-</form>
-<div id="list">
-    {% for story in stories %}
-        <a href="{% url "menu:read" story.pk %}" class="results">
-            <h1>{{ story.title }}</h1>
-            <pre>Kategorie:{{ story.category }}   Autor:{{ story.fk_user.username }}   Likes:0</pre>
-        </a>
-    {% endfor %}
-</div>
+    <form id="search" method="post" action="{% url 'menu:search' %}">
+        {% csrf_token %}
+        <input id="story_name" type="text" name="story_name" required>
+        <input id="submit" type="submit" value="Search">
+    </form>
+    <div id="list">
+        {% for story in stories %}
+            <a href="{% url "menu:read" story.pk %}" class="results">
+                <h1>{{ story.title }}</h1>
+                <pre>Kategorie:{{ story.category }}   Autor:{{ story.fk_user.username }}   Likes:0</pre>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}
